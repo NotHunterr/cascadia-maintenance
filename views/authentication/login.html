@@ -14,7 +14,7 @@
         <img src="../img/Cascadia_logo_typeOnly_orange.png" alt="Cascadia Logo" class="logo">
         <h1 class="main-title">Please Login To Your Correct Department</h1>
     </header>
-    <form>
+    <form hx-get="/validLogin" /* hx-swap something */ hx-target  > 
         <div class="username">
             
             <label for="username">Username </label>
@@ -29,7 +29,9 @@
             
             <label for="submission">Submit</label>
             <input type="submit" placeholder="login" class="submission" value="Login">
+            <div class="login-successful"></div>
         </div>
+        
     </form>
 
 </body>
