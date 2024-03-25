@@ -17,6 +17,8 @@ func validLoginHandler(w http.ResponseWriter, r *http.Request) {
 	
 		fmt.Printf("Username: %s", username)
 		fmt.Printf("Password: %s", password)
+
+		fmt.Printf("<p> Login successful</p>" // fix syntax
 	}
 
 
