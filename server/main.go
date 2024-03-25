@@ -16,7 +16,8 @@ func validLoginHandler(w http.ResponseWriter, r *http.Request) {
 		password := r.FormValue("password")
 	
 		fmt.Printf("Username: %s", username)
-		fmt.Printf("Password: %s", password)
+		fmt.Println("Password: ", password)
+		fmt.Println(":D")
 	}
 
 

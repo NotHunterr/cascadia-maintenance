@@ -10,6 +10,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-color: lightgray;
 }
 
 .main-title {
@@ -60,4 +61,36 @@ form {
   align-items: center;
   justify-content: center;
   margin-bottom: 15px;
+}
+
+input,
+button {
+  width: 300px;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 1rem;
+}
+
+.username,
+.password,
+input {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.submit-button {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.submit-button > button {
+  cursor: pointer;
+}
+
+.submit-button > button:hover {
+  background-color: rgb(123, 122, 122);
 }
