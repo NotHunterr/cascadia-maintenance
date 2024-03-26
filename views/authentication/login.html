@@ -15,11 +15,7 @@
         <img src="../img/Cascadia_logo_typeOnly_orange.png" alt="Cascadia Logo" class="logo">
         <h1 class="main-title">Please Login To Your Correct Department</h1>
     </header>
-<<<<<<< HEAD
-    <form method="GET" action="/validLogin">
-=======
-    <form hx-get="/validLogin" /* hx-swap something */ hx-target  > 
->>>>>>> 8371e42859fa24f09aae489554e6b19ab50b42ab
+    <form hx-get="/validLogin" hx-swap="#login-successful" >
         <div class="username">
             
             <label for="username">Username </label>
@@ -31,16 +27,9 @@
         <input type="text" placeholder="Enter Password Here" name="password">
     </div>
         <div class="submit-button">
-<<<<<<< HEAD
             <button>Login</button>
-=======
-            
-            <label for="submission">Submit</label>
-            <input type="submit" placeholder="login" class="submission" value="Login">
-            <div class="login-successful"></div>
->>>>>>> 8371e42859fa24f09aae489554e6b19ab50b42ab
         </div>
-        
+        <div id="login-successful"></div>
     </form>
 
 </body>
