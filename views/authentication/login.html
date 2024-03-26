@@ -15,7 +15,7 @@
         <img src="../img/Cascadia_logo_typeOnly_orange.png" alt="Cascadia Logo" class="logo">
         <h1 class="main-title">Please Login To Your Correct Department</h1>
     </header>
-    <form hx-get="/validLogin" hx-swap="#successful">
+    <form hx-get="/validLogin" hx-target="#successful" hx-swap="outerHTML">
         <div class="username">
             
             <label for="username">Username </label>
