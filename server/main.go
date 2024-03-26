@@ -3,10 +3,11 @@ package main
 import (
 	"fmt"
 	"html/template"
+	"io"
 	"net/http"
 
-	"github.com/go-chi/chi/v5"
-	"github.com/go-chi/chi/v5/middleware"
+	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 )
 
 
@@ -14,13 +15,17 @@ type Templates struct {
 	templates *template.Template
 }
 
-func (t *Templates) RenderTemplate(w http.ResponseWriter, name string, data interface{}) error {
+func (t *Templates) Render(w io.Writer, name string, data interface{}, c echo.Context) error {
 	return t.templates.ExecuteTemplate(w, name, data)
+}
+
+type Information struct {
+	Information string
 }
 
 func newTemplates() *Templates {
 	return &Templates{
-		templates: template.Must(template.ParseGlob("../views/*.html")),
+		templates: template.Must(template.ParseGlob("../views/authentication/*.html")),
 	}
 }
 
@@ -34,12 +39,17 @@ func validLoginHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-		router := chi.NewRouter()
-		router.Use(middleware.Logger)
+		router := echo.New()
+		router.Use(middleware.Logger())
 	
 		// fs := http.FileServer(http.Dir("../views"))
 		// router.Handle("/*", http.StripPrefix("/", fs))
-		router.Get("/validLogin", validLoginHandler)
-		fmt.Println("Server is running on port 42069")
-		http.ListenAndServe("localhost:42069", router)
+
+		router.Renderer = newTemplates()
+		// fmt.Println("Server is running on port 42069")
+		// http.ListenAndServe("localhost:42069", router)
+		router.GET("/", func(c echo.Context) error {
+			return c.Render(200, "../views/authentication/login.html", nil)
+		})
+
 	}
