@@ -17,8 +17,12 @@ func validLoginHandler(w http.ResponseWriter, r *http.Request) {
 	
 		fmt.Printf("Username: %s", username)
 		fmt.Println("Password: ", password)
-		fmt.Println(":D")
+		
+		if username == "admin" && password == "admin" {	
+			fmt.Fprintf(w, "Login Successful! Re-directing")
 	}
+
+}
 
 
 	func main() {
