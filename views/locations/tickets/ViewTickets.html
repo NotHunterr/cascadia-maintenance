@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cascadia Maintenance Sheet</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./ViewTickets.css" />
+    <script src="./ViewTickets.js" defer></script>
+    <script
+      src="https://unpkg.com/htmx.org@1.9.11"
+      integrity="sha384-0gxUXCCR8yv9FM2b+U3FDbsKthCI66oH5IA9fHppQq9DDMHuMauqq1ZHBpJxQ0J0"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <!-- Main Web page -->
+    <header>
+      <img
+        src="../../img/Cascadia_logo_typeOnly_orange.png"
+        alt="Cascadia Logo"
+        class="logo"
+      />
+      <h1 class="main-title">Cascadia Windows & Doors Maintenance Logs</h1>
+    </header>
+    <div class="sub-header">
+      <div class="search">
+        <input type="text" placeholder="Search Tickets" />
+      </div>
+      <button id="new-ticket-btn">Create New Ticket</button>
+    </div>
+    <div class="card">
+      <h3 class="ticket-title">This is a ticket title</h3>
+      <p class="issue-description">
+        This is a small description of the issue that I am encountering. You
+        could do this and this to fix it, or you could also just try that. I
+        think this might work better than that.
+      </p>
+      <!-- <p class="department-name">Assembly Floor</p> -->
+      <button class="expand" hx-get="/OpenNewTicket">See More</button>
+    </div>
+    <!-- Modal to create ticket -->
+    <div class="create-ticket-modal">
+      <div class="modal-content">
+        <dialog id="modal">
+          <button id="close-modal">&times;</button>
+          <label for="ticket-create-tile">Main Issue</label>
+          <input type="text" id="ticket-create-title" />
+          <label for="ticket-create-description">Description</label>
+          <textarea id="ticket-create-description"></textarea>
+          <label for="ticket-create-department">Department</label>
+          <select id="ticket-create-department">
+            <option value="AssemblyFloor">Assembly Floor</option>
+            <option value="Glazing">Glazing</option>
+            <option value="Mill">Mill Room</option>
+            <option value="Receiving">Paint Room</option>
+            <option value="Shipping">Shipping & Receiving</option>
+          </select>
+          <button type="submit" class="ticket-submission">
+            Create New Ticket
+          </button>
+        </dialog>
+      </div>
+    </div>
+  </body>
+</html>

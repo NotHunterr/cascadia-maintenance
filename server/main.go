@@ -15,6 +15,7 @@ import (
 	"github.com/go-chi/chi/v5/middleware"
 )
 
+
 func validLoginHandler(w http.ResponseWriter, r *http.Request) {
 
 		username := r.FormValue("username")
@@ -33,9 +34,6 @@ func validLoginHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 }
-
-
-
 
 	func main() {
 		// Initializing Chi router
@@ -62,5 +60,7 @@ func validLoginHandler(w http.ResponseWriter, r *http.Request) {
 		router.Handle("/*", http.StripPrefix("/", fs))
 		router.Get("/validLogin", validLoginHandler)
 		fmt.Println("Server is running on port 42069")
+
 		http.ListenAndServe("localhost:42069", router)
 	}
+
