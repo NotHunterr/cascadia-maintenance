@@ -48,7 +48,7 @@
     <div class="create-ticket-modal">
       <div class="modal-content">
         <dialog id="modal">
-          <form hx-post="/createNewTicket">
+          <form hx-post="/createNewTicket" hx-target="test">
             <button id="close-modal">&times;</button>
             <label for="ticket-create-tile">Main Issue</label>
             <input type="text" id="ticket-create-title" name="create-title" />
