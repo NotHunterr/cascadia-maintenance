@@ -15,6 +15,13 @@ import (
 	"github.com/go-chi/chi/v5/middleware"
 )
 
+// To-do - learn enum for locations, might make it easier
+
+type CreateNewTicket struct {
+	title string
+	description string
+	location string
+}
 
 func validLoginHandler(w http.ResponseWriter, r *http.Request) {
 
@@ -26,7 +33,7 @@ func validLoginHandler(w http.ResponseWriter, r *http.Request) {
 
 		if username == "admin" && password == "admin" {
 			fmt.Fprintf(w, "Login Successful! Re-directing")
-			fmt.Fprintf(w, "<script>setTimeout(function(){window.location.href = '../locations/AssemblyFloor.html';}, 1000);</script>")
+			fmt.Fprintf(w, "<script>setTimeout(function(){window.location.href = '../locations/tickets/ViewTickets.html';}, 1000);</script>")
 	} else {
 		fmt.Fprintf(w, "Login Failed! Please try again.")
 		fmt.Fprintf(w, "<script>setTimeout(function(){window.location.href = './login.html';}, 1500);</script>")
@@ -34,6 +41,18 @@ func validLoginHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 }
+
+func createNewTicketHandler(w http.ResponseWriter, r *http.Request) {
+	title := r.FormValue("create-title")
+	description := r.FormValue("create-description")
+	location := r.FormValue("create-location")
+
+	fmt.Printf("title: %s, description: %s, location: %s", title, description, location)
+
+
+
+}
+
 
 	func main() {
 		// Initializing Chi router
@@ -59,8 +78,7 @@ func validLoginHandler(w http.ResponseWriter, r *http.Request) {
 		fs := http.FileServer(http.Dir("../views"))
 		router.Handle("/*", http.StripPrefix("/", fs))
 		router.Get("/validLogin", validLoginHandler)
+		router.Post("/createNewTicket", createNewTicketHandler)
 		fmt.Println("Server is running on port 42069")
-
 		http.ListenAndServe("localhost:42069", router)
 	}
-

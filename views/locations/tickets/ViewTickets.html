@@ -48,22 +48,28 @@
     <div class="create-ticket-modal">
       <div class="modal-content">
         <dialog id="modal">
-          <button id="close-modal">&times;</button>
-          <label for="ticket-create-tile">Main Issue</label>
-          <input type="text" id="ticket-create-title" />
-          <label for="ticket-create-description">Description</label>
-          <textarea id="ticket-create-description"></textarea>
-          <label for="ticket-create-department">Department</label>
-          <select id="ticket-create-department">
-            <option value="AssemblyFloor">Assembly Floor</option>
-            <option value="Glazing">Glazing</option>
-            <option value="Mill">Mill Room</option>
-            <option value="Receiving">Paint Room</option>
-            <option value="Shipping">Shipping & Receiving</option>
-          </select>
-          <button type="submit" class="ticket-submission">
-            Create New Ticket
-          </button>
+          <form hx-post="/createNewTicket">
+            <button id="close-modal">&times;</button>
+            <label for="ticket-create-tile">Main Issue</label>
+            <input type="text" id="ticket-create-title" name="create-title" />
+            <label for="ticket-create-description">Description</label>
+            <textarea
+              id="ticket-create-description"
+              name="create-description"
+            ></textarea>
+            <label for="ticket-create-department">Department</label>
+            <select id="ticket-create-department" name="create-location">
+              <option value="AssemblyFloor">Assembly Floor</option>
+              <option value="Glazing">Glazing</option>
+              <option value="Mill">Mill Room</option>
+              <option value="Receiving">Paint Room</option>
+              <option value="Shipping">Shipping & Receiving</option>
+            </select>
+            <button type="submit" class="ticket-submission">
+              Create New Ticket
+            </button>
+          </form>
+          <div class="test"></div>
         </dialog>
       </div>
     </div>
